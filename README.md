@@ -32,5 +32,3 @@ Database is created automatically at `data/parking.db` on first launch.
 ## GitHub
 Create a public repository named `BBAT104_TQM_<RegNo>`, then follow `docs/GITHUB_WORKFLOW.md` to push this repository. The included history has 30 meaningful project commits for demonstration; continue making your own commits as you develop and test the project.
 
-## Important academic note
-The guidelines assign a Quality Goal (Q01–Q20) based on the allotment sheet. This starter implements a balanced set of quality features; adjust the selected five features to match your individually assigned goal before submission. Replace sample defect counts and assumptions with observations from your own testing.
