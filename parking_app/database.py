@@ -2,7 +2,7 @@
 import sqlite3
 from contextlib import contextmanager
 from pathlib import Path
-from parking_app.config import DB_PATH, DATA_DIR
+from parking_app.config import DB_PATH
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS settings (
@@ -50,7 +50,6 @@ def connect(db_path: Path | str = DB_PATH):
         connection.close()
 
 def initialize_database(db_path: Path | str = DB_PATH) -> None:
-    Path(db_path).parent.mkdir(parents=True, exist_ok=True)
     with connect(db_path) as con:
         con.executescript(SCHEMA)
         con.execute("INSERT OR IGNORE INTO settings(key,value) VALUES('slot_capacity','20')")

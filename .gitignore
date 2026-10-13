@@ -1,7 +1,39 @@
+# Python cache
 __pycache__/
 *.py[cod]
+*$py.class
+
+# Virtual environments
 .venv/
 venv/
-data/*.db
+env/
+
+# Local environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# SQLite database files
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Test and coverage artifacts
+.coverage
+htmlcov/
+.pytest_cache/
+
+# IDE and OS files
+.vscode/
+.idea/
 *.log
 .DS_Store
+Thumbs.db
+
+# Optional supporting documentation
+docs/COMMIT_PLAN.md
+docs/GITHUB_WORKFLOW.md
+docs/VIVA_QUESTIONS.md

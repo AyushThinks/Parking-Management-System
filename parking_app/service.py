@@ -82,7 +82,8 @@ class ParkingService:
         sql = "SELECT * FROM parking_records WHERE 1=1"
         params: list = []
         if status in ("Parked", "Exited"):
-            sql += " AND status=?"; params.append(status)
+            sql += " AND status=?"
+            params.append(status)
         term = (search or "").strip()
         if term:
             sql += " AND (vehicle_number LIKE ? OR owner_name LIKE ? OR CAST(slot_number AS TEXT) LIKE ?)"
@@ -104,9 +105,11 @@ class ParkingService:
     def export_csv(self, output_path: Path | str) -> int:
         records = self.list_records()
         fields = ["id", "vehicle_number", "owner_name", "vehicle_type", "slot_number", "entry_time", "exit_time", "duration_hours", "fee", "status"]
-        path = Path(output_path); path.parent.mkdir(parents=True, exist_ok=True)
+        path = Path(output_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
         with path.open("w", newline="", encoding="utf-8-sig") as file:
-            writer = csv.DictWriter(file, fieldnames=fields); writer.writeheader()
+            writer = csv.DictWriter(file, fieldnames=fields)
+            writer.writeheader()
             writer.writerows({key: row.get(key) for key in fields} for row in records)
         with connect(self.db_path) as con:
             self._audit(con, "CSV_EXPORTED", f"Exported {len(records)} records to {path.name}")
